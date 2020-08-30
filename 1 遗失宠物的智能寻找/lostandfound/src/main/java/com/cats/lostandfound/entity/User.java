@@ -4,16 +4,16 @@ package com.cats.lostandfound.entity;
  * 用户信息
  */
 public class User {
-    private Long id;
+    private Long user_id;
     private String email;
     private String password;
 
     public Long getId() {
-        return id;
+        return user_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long user_id) {
+        this.user_id = user_id;
     }
 
     public String getPassword() {
@@ -35,7 +35,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + user_id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

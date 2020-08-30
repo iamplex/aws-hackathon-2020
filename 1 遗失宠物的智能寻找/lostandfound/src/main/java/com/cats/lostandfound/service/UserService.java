@@ -57,7 +57,7 @@ public class UserService {
             }else{
                 result.setMsg("登录成功");
                 result.setSuccess(true);
-                user.setId(userId);
+                user.setUserId(userId);
                 result.setDetail(user);
             }
         } catch (Exception e) {
