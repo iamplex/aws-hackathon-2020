@@ -21,7 +21,7 @@ public class PostService {
     @Autowired
     private PhotoMapper photoMapper;
 
-    public Message<Post> post(Post post) {
+    public Message<Post> addPost(Post post) {
         Message<Post> result = new Message<>();
         result.setSuccess(false);
         result.setDetail(null);
@@ -93,12 +93,12 @@ public class PostService {
         return result;
     }
 
-    public Message<List<Post>> findPostsByUserId(User user) {
+    public Message<List<Post>> findPostsByUserId(long user_id) {
         Message<List<Post>> result = new Message<>();
         result.setSuccess(false);
         result.setDetail(null);
         try {
-            List<Post> posts = postMapper.findPostsByUserId(user.getId());
+            List<Post> posts = postMapper.findPostsByUserId(user_id);
             result.setMsg("查询成功");
             result.setDetail(posts);
             result.setSuccess(true);
