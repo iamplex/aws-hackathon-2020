@@ -1,11 +1,9 @@
 package com.cats.lostandfound.entity;
 
-import java.util.Date;
-
 public class Post {
     private long post_id;
     private long user_id;
-    private int location;
+    private String location;
     private String title;
     private String description;
     private int cat_class;
@@ -30,11 +28,11 @@ public class Post {
         this.user_id = user_id;
     }
 
-    public int getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(int location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 

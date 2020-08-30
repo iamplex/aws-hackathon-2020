@@ -1,7 +1,7 @@
 package com.cats.lostandfound.entity;
 
 public class Filter {
-    private int location;
+    private String location;
     private int cat_class;
     private int type;
     private int status;
@@ -10,11 +10,11 @@ public class Filter {
     private int offset;
     private int page_size;
 
-    public int getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(int location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 

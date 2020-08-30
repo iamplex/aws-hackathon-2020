@@ -13,7 +13,7 @@ public interface PostMapper {
 
     @Insert("insert into post values(#{post_id}, #{user_id},#{location},#{title},#{description},#{cat_class},#{type},#{status},#{cover_path})")
     @Options(useGeneratedKeys = true,keyProperty = "post_id",keyColumn = "post_id")
-    public long post(Post post);
+    long post(Post post);
 
     @Select(value = "select * from post where user_id=#{user_id} order by timestamp desc")
     @Results(id="postMap", value={
@@ -28,23 +28,23 @@ public interface PostMapper {
             @Result(property = "cover_path",column = "cover_path"),
             @Result(property = "timestamp",column = "timestamp")
     })
-    public List<Post> findPostsByUserId(@Param("user_id") long user_id);
+    List<Post> findPostsByUserId(@Param("user_id") long user_id);
 
     @Update("update post set location=#{location}, title=#{title}, " +
             "description = #{description}, cat_class = #{cat_class}, " +
             "type = #{type}, status = #{status}, cover_path = #{cover_path}, " +
             "timestamp = #{timestamp} " +
             " where post_id=#{post_id} ")
-    public void updatePost(@Param("post_id")long post_id, @Param("location")int location, @Param("title")String title,
+    void updatePost(@Param("post_id")long post_id, @Param("location")String location, @Param("title")String title,
                                      @Param("description")String description, @Param("cat_class")int cat_class,
                                   @Param("type")int type, @Param("status")int status, @Param("cover_path") String cover_path,
                           @Param("timestamp") long timestamp);
 
     @Update("update post set cover_path = #{cover_path} where post_id=#{post_id} ")
-    public int updatePostCoverPath(@Param("post_id")long post_id, @Param("cover_path") String cover_path);
+    int updatePostCoverPath(@Param("post_id")long post_id, @Param("cover_path") String cover_path);
 
     @Delete("delete from post where post_id=#{post_id}")
-    public void deleteByPostId(@Param("post_id") long post_id);
+    void deleteByPostId(@Param("post_id") long post_id);
 
     @Select({"<script>",
             " select * from post ",
@@ -71,6 +71,6 @@ public interface PostMapper {
             " limit #{offset},#{page_size} ",
             "</script>"})
     @ResultMap("postMap")
-    public List<Post> findPostsByFilters(Filter filter);
+    List<Post> findPostsByFilters(Filter filter);
 
 }
