@@ -38,12 +38,12 @@ public class PostController {
 
     /**
      * 当用户取消发表或者删除post时调用，只需填充post_id
-     * @param post
+     * @param post_id
      * @return
      */
-    @PostMapping(value = "/delete")
-    public Message<Post> deletePost(Post post){
-        return postService.deletePost(post);
+    @GetMapping(value = "/delete/{post_id}")
+    public Message<Post> deletePost(@PathVariable long post_id){
+        return postService.deletePost(post_id);
     }
 
     /**

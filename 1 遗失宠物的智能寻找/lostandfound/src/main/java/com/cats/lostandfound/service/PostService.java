@@ -3,8 +3,6 @@ package com.cats.lostandfound.service;
 import com.cats.lostandfound.entity.Filter;
 import com.cats.lostandfound.entity.Message;
 import com.cats.lostandfound.entity.Post;
-import com.cats.lostandfound.entity.User;
-import com.cats.lostandfound.mapper.PhotoMapper;
 import com.cats.lostandfound.mapper.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +15,6 @@ import java.util.List;
 public class PostService {
     @Autowired
     private PostMapper postMapper;
-
-    @Autowired
-    private PhotoMapper photoMapper;
 
     public Message<Post> addPost(Post post) {
         Message<Post> result = new Message<>();
@@ -40,13 +35,12 @@ public class PostService {
         return result;
     }
 
-    public Message<Post> deletePost(Post post) {
+    public Message<Post> deletePost(long post_id) {
         Message<Post> result = new Message<>();
         result.setSuccess(false);
         result.setDetail(null);
         try {
-            //TODO: delete related photos
-            postMapper.deleteByPostId(post.getPost_id());
+            postMapper.deleteByPostId(post_id);
             result.setMsg("删除成功");
             result.setSuccess(true);
         } catch (Exception e) {

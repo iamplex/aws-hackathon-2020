@@ -30,7 +30,6 @@ public class UserService {
 
             }else{
                 userMapper.regist(user);
-                //System.out.println(user.getId());
                 result.setMsg("注册成功");
                 result.setSuccess(true);
                 result.setDetail(user);

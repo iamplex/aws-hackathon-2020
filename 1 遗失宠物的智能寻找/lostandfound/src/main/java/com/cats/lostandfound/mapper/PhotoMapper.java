@@ -1,7 +1,6 @@
 package com.cats.lostandfound.mapper;
 
 import com.cats.lostandfound.entity.Photo;
-import com.cats.lostandfound.entity.Post;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -30,10 +29,10 @@ public interface PhotoMapper {
     public Photo findCoverByPostId(@Param("post_id") long post_id);
 
     @Delete("delete from photo where photo_id=#{photo_id}")
-    public int deleteByPhotoId(@Param("photo_id") long photo_id);
+    public void deleteByPhotoId(@Param("photo_id") long photo_id);
 
     @Delete("delete from photo where post_id=#{post_id}")
-    public int deleteByPostId(@Param("post_id") long post_id);
+    public void deleteByPostId(@Param("post_id") long post_id);
 
     @Select(value = "select * from photo where post_id is null")
     @ResultMap("photoMap")
