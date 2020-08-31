@@ -1,5 +1,16 @@
 package com.cats.lostandfound.entity;
 
+/**
+ *
+ * location:字符串，6位地区码
+ * cat_class:数字，0到12，
+ * type:lost-0,found-1
+ * status:仍在寻找猫或寻找主人-0,已经找到-1
+ * startTime:长整型的毫秒数，起始时间，用于按时间段查询，例如最近一个月
+ * endTime:长整型毫秒数，终止时间
+ * offset: = (pageNumber页码 - 1)*page_size
+ * page_size:每页显示的post个数
+ */
 public class Filter {
     private String location;
     private int cat_class;

@@ -1,5 +1,17 @@
 package com.cats.lostandfound.entity;
 
+/**
+ * post_id:自增id
+ * user_id:关联user表的user_id
+ * location:字符串，6位地区码
+ * title:标题，限制128个字符
+ * description:文字内容，描述宠物具体信息，有字数限制500个字符
+ * cat_class:数字，0到12，
+ * type:lost-0,found-1
+ * status:仍在寻找猫或寻找主人-0,已经找到-1
+ * timestamp:毫秒数
+ * cover_path:封面图路径
+ */
 public class Post {
     private long post_id;
     private long user_id;
