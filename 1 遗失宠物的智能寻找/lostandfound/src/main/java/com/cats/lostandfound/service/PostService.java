@@ -22,8 +22,7 @@ public class PostService {
         result.setDetail(null);
         try {
             post.setTimestamp(System.currentTimeMillis());
-            long postId = postMapper.post(post);
-            post.setPost_id(postId);
+            postMapper.post(post);
             result.setMsg("创建Post成功");
             result.setDetail(post);
             result.setSuccess(true);

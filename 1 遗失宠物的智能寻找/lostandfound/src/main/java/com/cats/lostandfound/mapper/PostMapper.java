@@ -13,7 +13,7 @@ public interface PostMapper {
 
     @Insert("insert into post values(#{post_id}, #{user_id},#{location},#{title},#{description},#{cat_class}, #{adult}, #{type},#{status},#{cover_path},#{timestamp},#{lof_time},#{email_notify})")
     @Options(useGeneratedKeys = true,keyProperty = "post_id",keyColumn = "post_id")
-    long post(Post post);
+    void post(Post post);
 
     @Select(value = "select * from post where user_id=#{user_id} order by timestamp desc")
     @Results(id="postMap", value={

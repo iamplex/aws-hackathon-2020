@@ -12,7 +12,7 @@ public interface PhotoMapper {
 
     @Insert("insert into photo values(#{photo_id}, #{post_id},#{path},#{index}, #{cat_class})")
     @Options(useGeneratedKeys = true,keyProperty = "photo_id",keyColumn = "photo_id")
-    public long addPhoto(Photo photo);
+    void addPhoto(Photo photo);
 
     @Select(value = "select * from photo where post_id=#{post_id} order by timestamp desc")
     @Results(id="photoMap", value={
@@ -22,19 +22,19 @@ public interface PhotoMapper {
             @Result(property = "index",column = "index"),
             @Result(property = "cat_class",column = "cat_class")
     })
-    public List<Photo> findPhotosByPostId(@Param("post_id") long post_id);
+    List<Photo> findPhotosByPostId(@Param("post_id") long post_id);
 
     @Select(value = "select * from photo where post_id=#{post_id} and index = 0 order by timestamp desc")
     @ResultMap("photoMap")
-    public Photo findCoverByPostId(@Param("post_id") long post_id);
+    Photo findCoverByPostId(@Param("post_id") long post_id);
 
     @Delete("delete from photo where photo_id=#{photo_id}")
-    public void deleteByPhotoId(@Param("photo_id") long photo_id);
+    void deleteByPhotoId(@Param("photo_id") long photo_id);
 
     @Delete("delete from photo where post_id=#{post_id}")
-    public void deleteByPostId(@Param("post_id") long post_id);
+    void deleteByPostId(@Param("post_id") long post_id);
 
     @Select(value = "select * from photo where post_id is null")
     @ResultMap("photoMap")
-    public List<Photo> findNullPhotos();
+    List<Photo> findNullPhotos();
 }
