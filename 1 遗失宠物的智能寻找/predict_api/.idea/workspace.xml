@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e894f8da-afb8-4519-a85b-e5f75c0706dd" name="Default Changelist" comment="predict">
       <change beforePath="$PROJECT_DIR$/../lostandfound/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../lostandfound/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

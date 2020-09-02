@@ -61,7 +61,7 @@ public class PostController {
      * @param user_id
      * @return
      */
-    @GetMapping(value = "/{user_id}")
+    @GetMapping(value = "/user_id/{user_id}")
     public Message<List<Post>> findPostByUserId(@PathVariable long user_id){
         return postService.findPostsByUserId(user_id);
     }
@@ -71,7 +71,7 @@ public class PostController {
      * @param post_id
      * @return
      */
-    @GetMapping(value = "/{post_id}")
+    @GetMapping(value = "/post_id/{post_id}")
     public Message<Post> findPostByPostId(@PathVariable long post_id){
         return postService.findPostsByPostId(post_id);
     }
