@@ -4,7 +4,7 @@ public class Photo {
     private long photo_id;
     private long post_id;
     private String path;
-    private int index;
+    private int photo_index;
     private int cat_class;
 
     public long getPhoto_id() {
@@ -31,12 +31,12 @@ public class Photo {
         this.path = path;
     }
 
-    public int getIndex() {
-        return index;
+    public int getPhoto_index() {
+        return photo_index;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setPhoto_index(int photo_index) {
+        this.photo_index = photo_index;
     }
 
     public int getCat_class() {
@@ -53,7 +53,7 @@ public class Photo {
                 "photo_id=" + photo_id +
                 ", post_id=" + post_id +
                 ", path='" + path + '\'' +
-                ", index=" + index +
+                ", index=" + photo_index +
                 ", cat_class=" + cat_class +
                 '}';
     }

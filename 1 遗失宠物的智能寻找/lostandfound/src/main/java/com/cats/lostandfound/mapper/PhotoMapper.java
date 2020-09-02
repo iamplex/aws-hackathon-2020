@@ -10,21 +10,21 @@ import java.util.List;
 @Repository
 public interface PhotoMapper {
 
-    @Insert("insert into photo values(#{photo_id}, #{post_id},#{path},#{index}, #{cat_class})")
+    @Insert("insert into photo values(#{photo_id}, #{post_id},#{path},#{photo_index}, #{cat_class})")
     @Options(useGeneratedKeys = true,keyProperty = "photo_id",keyColumn = "photo_id")
     void addPhoto(Photo photo);
 
-    @Select(value = "select * from photo where post_id=#{post_id} order by timestamp desc")
+    @Select(value = "select * from photo where post_id=#{post_id} order by photo_index")
     @Results(id="photoMap", value={
             @Result(property = "photo_id",column = "photo_id"),
             @Result(property = "post_id",column = "post_id"),
             @Result(property = "path",column = "path"),
-            @Result(property = "index",column = "index"),
+            @Result(property = "photo_index",column = "photo_index"),
             @Result(property = "cat_class",column = "cat_class")
     })
     List<Photo> findPhotosByPostId(@Param("post_id") long post_id);
 
-    @Select(value = "select * from photo where post_id=#{post_id} and index = 0 order by timestamp desc")
+    @Select(value = "select * from photo where post_id=#{post_id} and photo_index = 0")
     @ResultMap("photoMap")
     Photo findCoverByPostId(@Param("post_id") long post_id);
 
