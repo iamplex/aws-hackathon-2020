@@ -1,5 +1,12 @@
 package com.cats.lostandfound.entity;
 
+/**
+ * photo_id:图片id
+ * post_id:post的id
+ * path:路径，就是那个key
+ * photo_index:图片序号，1表示第一张，也就是封面
+ * cat_class:猫的种类，0到12
+ */
 public class Photo {
     private long photo_id;
     private long post_id;
