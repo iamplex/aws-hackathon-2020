@@ -11,6 +11,9 @@ package com.cats.lostandfound.entity;
  * status:仍在寻找猫或寻找主人-0,已经找到-1
  * timestamp:毫秒数
  * cover_path:封面图路径
+ * lof_time:丢失或找到的时间
+ * email_notify: 0-不接受邮件通知，1-接收邮件通知，前端默认勾选，也就是接收
+ * adult:猫是否成年，0-未成年小猫，1-成年猫
  */
 public class Post {
     private long post_id;
@@ -23,6 +26,9 @@ public class Post {
     private int status;
     private long timestamp;
     private String cover_path;
+    private long lof_time;
+    private int email_notify;
+    private int adult;
 
     public long getPost_id() {
         return post_id;
@@ -104,12 +110,36 @@ public class Post {
         this.cover_path = cover_path;
     }
 
+    public long getLof_time() {
+        return lof_time;
+    }
+
+    public void setLof_time(long lof_time) {
+        this.lof_time = lof_time;
+    }
+
+    public int getEmail_notify() {
+        return email_notify;
+    }
+
+    public void setEmail_notify(int email_notify) {
+        this.email_notify = email_notify;
+    }
+
+    public int getAdult() {
+        return adult;
+    }
+
+    public void setAdult(int adult) {
+        this.adult = adult;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
                 "post_id=" + post_id +
                 ", user_id=" + user_id +
-                ", location=" + location +
+                ", location='" + location + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", cat_class=" + cat_class +
@@ -117,6 +147,9 @@ public class Post {
                 ", status=" + status +
                 ", timestamp=" + timestamp +
                 ", cover_path='" + cover_path + '\'' +
+                ", lof_time=" + lof_time +
+                ", email_notify=" + email_notify +
+                ", adult=" + adult +
                 '}';
     }
 }

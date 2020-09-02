@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface PostMapper {
 
-    @Insert("insert into post values(#{post_id}, #{user_id},#{location},#{title},#{description},#{cat_class},#{type},#{status},#{cover_path})")
+    @Insert("insert into post values(#{post_id}, #{user_id},#{location},#{title},#{description},#{cat_class}, #{adult}, #{type},#{status},#{cover_path},#{timestamp},#{lof_time},#{email_notify})")
     @Options(useGeneratedKeys = true,keyProperty = "post_id",keyColumn = "post_id")
     long post(Post post);
 
@@ -23,25 +23,31 @@ public interface PostMapper {
             @Result(property = "title",column = "title"),
             @Result(property = "description",column = "description"),
             @Result(property = "cat_class",column = "cat_class"),
+            @Result(property = "adult",column = "adult"),
             @Result(property = "type",column = "type"),
             @Result(property = "status",column = "status"),
             @Result(property = "cover_path",column = "cover_path"),
-            @Result(property = "timestamp",column = "timestamp")
+            @Result(property = "timestamp",column = "timestamp"),
+            @Result(property = "lof_time",column = "lof_time"),
+            @Result(property = "email_notify",column = "email_notify")
     })
     List<Post> findPostsByUserId(@Param("user_id") long user_id);
+
+    @Select(value = "select * from post where post_id=#{post_id} order by timestamp desc")
+    @ResultMap("postMap")
+    Post findPostByPostId(@Param("post_id") long post_id);
 
     @Update("update post set location=#{location}, title=#{title}, " +
             "description = #{description}, cat_class = #{cat_class}, " +
             "type = #{type}, status = #{status}, cover_path = #{cover_path}, " +
-            "timestamp = #{timestamp} " +
-            " where post_id=#{post_id} ")
+            "timestamp = #{timestamp}, " + "lof_time = #{lof_time}, " +
+            "email_notify = #{email_notify}, " + "adult = #{adult} " +
+            " where post_id = #{post_id} ")
     void updatePost(@Param("post_id")long post_id, @Param("location")String location, @Param("title")String title,
-                                     @Param("description")String description, @Param("cat_class")int cat_class,
-                                  @Param("type")int type, @Param("status")int status, @Param("cover_path") String cover_path,
-                          @Param("timestamp") long timestamp);
-
-    @Update("update post set cover_path = #{cover_path} where post_id=#{post_id} ")
-    int updatePostCoverPath(@Param("post_id")long post_id, @Param("cover_path") String cover_path);
+                    @Param("description")String description, @Param("cat_class")int cat_class,
+                    @Param("type")int type, @Param("status")int status, @Param("cover_path") String cover_path,
+                    @Param("timestamp") long timestamp, @Param("lof_time") long lof_time,
+                    @Param("email_notify") int email_notify, @Param("adult") int adult);
 
     @Delete("delete from post where post_id=#{post_id}")
     void deleteByPostId(@Param("post_id") long post_id);
@@ -61,11 +67,14 @@ public interface PostMapper {
             "<when test='status!=null'>",
             " and status = #{status} ",
             "</when>",
+            "<when test='adult!=null'>",
+            " and adult = #{adult} ",
+            "</when>",
             "<when test='startTime!=null'>",
-            " and timestamp > #{startTime} ",
+            " and lof_time &gt; #{startTime} ",
             "</when>",
             "<when test='endTime!=null'>",
-            " and timestamp <= #{endTime} ",
+            " and lof_time &lt;= #{endTime} ",
             "</when>",
             " order by timestamp desc ",
             " limit #{offset},#{page_size} ",

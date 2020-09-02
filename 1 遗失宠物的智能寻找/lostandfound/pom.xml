@@ -58,18 +58,6 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.tensorflow/tensorflow -->
-        <dependency>
-            <groupId>org.tensorflow</groupId>
-            <artifactId>tensorflow</artifactId>
-            <version>1.15.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.tensorflow/proto -->
-        <dependency>
-            <groupId>org.tensorflow</groupId>
-            <artifactId>proto</artifactId>
-            <version>1.15.0</version>
-        </dependency>
     </dependencies>
 
     <build>

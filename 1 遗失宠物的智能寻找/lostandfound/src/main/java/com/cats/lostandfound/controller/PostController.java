@@ -65,4 +65,14 @@ public class PostController {
     public Message<List<Post>> findPostByUserId(@PathVariable long user_id){
         return postService.findPostsByUserId(user_id);
     }
+
+    /**
+     * 通过post_id获取单个post，注意同时还需要通过photo的API根据post_id获取所有图片的路径
+     * @param post_id
+     * @return
+     */
+    @GetMapping(value = "/{post_id}")
+    public Message<Post> findPostByPostId(@PathVariable long post_id){
+        return postService.findPostsByPostId(post_id);
+    }
 }

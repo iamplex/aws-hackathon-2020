@@ -6,6 +6,7 @@ package com.cats.lostandfound.entity;
  * cat_class:数字，0到12，
  * type:lost-0,found-1
  * status:仍在寻找猫或寻找主人-0,已经找到-1
+ * adult:未成年猫-0，成年猫-1
  * startTime:长整型的毫秒数，起始时间，用于按时间段查询，例如最近一个月
  * endTime:长整型毫秒数，终止时间
  * offset: = (pageNumber页码 - 1)*page_size
@@ -16,6 +17,7 @@ public class Filter {
     private int cat_class;
     private int type;
     private int status;
+    private int adult;
     private long startTime;
     private long endTime;
     private int offset;
@@ -85,13 +87,22 @@ public class Filter {
         this.page_size = page_size;
     }
 
+    public int getAdult() {
+        return adult;
+    }
+
+    public void setAdult(int adult) {
+        this.adult = adult;
+    }
+
     @Override
     public String toString() {
         return "Filter{" +
-                "location=" + location +
+                "location='" + location + '\'' +
                 ", cat_class=" + cat_class +
                 ", type=" + type +
                 ", status=" + status +
+                ", adult=" + adult +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", offset=" + offset +

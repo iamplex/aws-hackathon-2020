@@ -58,7 +58,8 @@ public class PostService {
             post.setTimestamp(System.currentTimeMillis());
             postMapper.updatePost(post.getPost_id(), post.getLocation(), post.getTitle(),
                     post.getDescription(), post.getCat_class(), post.getType(), post.getStatus(),
-                    post.getCover_path(), System.currentTimeMillis());
+                    post.getCover_path(), System.currentTimeMillis(), post.getLof_time(),
+                    post.getEmail_notify(), post.getAdult());
             result.setMsg("发表成功");
             result.setDetail(post);
             result.setSuccess(true);
@@ -95,6 +96,23 @@ public class PostService {
             List<Post> posts = postMapper.findPostsByUserId(user_id);
             result.setMsg("查询成功");
             result.setDetail(posts);
+            result.setSuccess(true);
+
+        } catch (Exception e) {
+            result.setMsg(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public Message<Post> findPostsByPostId(long post_id) {
+        Message<Post> result = new Message<>();
+        result.setSuccess(false);
+        result.setDetail(null);
+        try {
+            Post post = postMapper.findPostByPostId(post_id);
+            result.setMsg("查询成功");
+            result.setDetail(post);
             result.setSuccess(true);
 
         } catch (Exception e) {
