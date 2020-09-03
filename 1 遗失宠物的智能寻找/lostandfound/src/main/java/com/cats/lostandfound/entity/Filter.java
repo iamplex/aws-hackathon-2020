@@ -9,8 +9,6 @@ package com.cats.lostandfound.entity;
  * adult:未成年猫-0，成年猫-1
  * startTime:长整型的毫秒数，起始时间，用于按时间段查询，例如最近一个月
  * endTime:长整型毫秒数，终止时间
- * offset: = (pageNumber页码 - 1)*page_size
- * page_size:每页显示的post个数
  */
 public class Filter {
     private String location;
@@ -20,8 +18,6 @@ public class Filter {
     private int adult;
     private long startTime;
     private long endTime;
-    private int offset;
-    private int page_size;
 
     public String getLocation() {
         return location;
@@ -71,22 +67,6 @@ public class Filter {
         this.endTime = endTime;
     }
 
-    public int getOffset() {
-        return offset;
-    }
-
-    public void setOffset(int offset) {
-        this.offset = offset;
-    }
-
-    public int getPage_size() {
-        return page_size;
-    }
-
-    public void setPage_size(int page_size) {
-        this.page_size = page_size;
-    }
-
     public int getAdult() {
         return adult;
     }
@@ -105,8 +85,6 @@ public class Filter {
                 ", adult=" + adult +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", offset=" + offset +
-                ", page_size=" + page_size +
                 '}';
     }
 }
