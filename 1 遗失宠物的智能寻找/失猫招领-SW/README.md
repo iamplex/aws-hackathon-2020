@@ -146,6 +146,8 @@ photo（用户上传的猫的图片表）
 
 
 **用于预测分类的flask Web API的部署**
+
+
 填充predict.py中用于身份认证的access_key等内容，然后在安装好python3.7+tensorflow的服务器上不挂起启动：
 
     nohup python predict.py > predict.log 2>&1 &
