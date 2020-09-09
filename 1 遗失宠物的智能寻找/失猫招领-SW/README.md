@@ -47,7 +47,7 @@
 <img src="https://fzhcats.s3-ap-northeast-1.amazonaws.com/documents/architecture.png" >
 
 
-#### 1. 数据集获取和模型训练
+### 1. 数据集获取和模型训练
 
 
 **数据集**  
