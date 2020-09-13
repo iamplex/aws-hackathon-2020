@@ -1,6 +1,7 @@
 import os
 import uuid
 
+from flask_cors import CORS
 from gevent import pywsgi
 from flask import Flask
 from flask import abort
@@ -46,5 +47,6 @@ def hello_world(path, filename):
     return str(code)
 
 if __name__ == '__main__':
+    CORS(app, supports_credentials=True)
     server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
     server.serve_forever()
