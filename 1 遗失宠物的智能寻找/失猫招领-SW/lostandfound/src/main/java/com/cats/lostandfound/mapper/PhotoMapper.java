@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface PhotoMapper {
 
-    @Insert("insert into photo values(#{photo_id}, #{post_id},#{path},#{photo_index}, #{cat_class})")
+    @Insert("insert into photo(photo_id, post_id, path, photo_index, cat_class) values(#{photo_id}, #{post_id},#{path},#{photo_index}, #{cat_class})")
     @Options(useGeneratedKeys = true,keyProperty = "photo_id",keyColumn = "photo_id")
     void addPhoto(Photo photo);
 
